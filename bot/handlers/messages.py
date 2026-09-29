@@ -2,6 +2,7 @@ import logging
 from maxapi import Bot
 from maxapi.types import InputMedia
 from bot.keyboard import Builder
+from bot.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +11,7 @@ class Messages:
     async def main_info(bot: Bot, chat_id: int):
         await bot.send_message(
             chat_id=chat_id,
-            attachments=[InputMedia(path="assets/title1.jpg"), Builder.main_kb()],
+            attachments=[InputMedia(path=settings.TITLE_IMG), Builder.main_kb()],
             text=(
                 f"<h1>О военном учебном центре</h1>\n\n"
                 f"Центр готовит студентов по военно-учетным специальностям для Воздушно-космических сил Минобороны России. Студенты, которые проходят подготовку по программам факультета военного образования, будут участвовать в учебных военных сборах.\n\n"
@@ -31,22 +32,22 @@ class Messages:
         )
         await bot.send_message(
             chat_id=chat_id,
-            attachments=[InputMedia(path="assets/ВУЦ Презентация.pdf")]
+            attachments=[InputMedia(path=settings.VUC_PRESENTATION_PDF)]
         )
         await bot.send_message(
                 chat_id=chat_id,
-                attachments=[InputMedia(path="assets/Положение о порядке проведения конкурсного отбора.pdf")]
+                attachments=[InputMedia(path=settings.SELECTION_REGULATIONS_PDF)]
             )
         await bot.send_message(
                 chat_id=chat_id,
-                attachments=[InputMedia(path="assets/Положение о Военном учебном центре.pdf")]
+                attachments=[InputMedia(path=settings.VUC_REGULATION_PDF)]
             )
 
     @staticmethod
     async def admission_info(bot: Bot, chat_id: int):
         await bot.send_message(
             chat_id=chat_id,
-            attachments=[InputMedia(path="assets/памятка.png"), Builder.admission_kb()],
+            attachments=[InputMedia(path=settings.REMINDER_IMG), Builder.admission_kb()],
             text=(
                 "<h1>Памятка студенту, поступающему в ВУЦ</h1>\n\n"
                 "<i>Начальник отделения набора кадров:</i>\n"
@@ -78,7 +79,7 @@ class Messages:
     async def meeting_info(bot: Bot, chat_id: int):
         await bot.send_message(
             chat_id=chat_id,
-            attachments=[InputMedia(path="assets/grafik2026.jpg"), Builder.admission_kb()],
+            attachments=[InputMedia(path=settings.MEETING_SCHEDULE_IMG), Builder.meeting_schedule_kb()],
             text="При себе необходимо иметь паспорт и студенческий билет!"
         )
 
@@ -98,7 +99,6 @@ class Messages:
     async def help(bot: Bot, chat_id: int):
         await bot.send_message(
             chat_id=chat_id,
-            attachments=[],
             text=(
                 "<h1>Команды для управления ботом:</h1>\n\n"
                 "<blockquote><b>/help</b> - помощь в управлении ботом\n\n"
