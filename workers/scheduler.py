@@ -18,6 +18,7 @@ def schedule_parse():
     asyncio.create_task(run_parse())
 
 async def main():
+    await run_parse()  # inital parsing
     schedule.every().day.at(settings.PARSE_TIME).do(schedule_parse)
     logger.info("Scheduler started")
 
