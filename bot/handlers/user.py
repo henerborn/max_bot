@@ -62,3 +62,7 @@ async def help_callback(callback: MessageCallback):
 async def help_message(event: MessageCreated):
     await Messages.help(event.bot, chat_id=event.chat.chat_id)
 
+@router.message_created()
+async def unknown_message(event: MessageCreated):
+    await Messages.unknown_message(event.bot, chat_id=event.chat.chat_id)
+

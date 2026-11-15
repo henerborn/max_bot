@@ -52,8 +52,8 @@ class Messages:
                 "<h1>Памятка студенту, поступающему в ВУЦ</h1>\n\n"     
                 "<i>Начальник отделения набора кадров:</i>\n"
                 "<pre>+7 953 519-55-21</pre>\n\n"
-                f"🔸 <a href='{pdf1}'>График проведения оценки физической подготовленности</a>\n"
-                f"<b>Бланки для заполнения:</b>\n\n"
+                f"🔸 <a href='{pdf1}'>График проведения оценки физической подготовленности</a>\n\n"
+                f"<b>Бланки для заполнения:</b>\n"
                 f"🔹 <a href='{docx1}'>Характеристика на кандидата</a>\n"
                 f"🔹 <a href='{docx2}'>Автобиография</a>\n"      
                 f"🔹 <a href='{docx3}'>Согласие на обработку персональных данных в ВУЦ</a>\n\n" 
@@ -91,6 +91,19 @@ class Messages:
                 "<b>/admission</b> - страница 'Поступлениe в ВУЦ'\n\n"
                 "<b>/meeting</b> - страница 'График встреч'\n\n"
                 "<b>/contacts</b> - страница 'Контакты'</blockquote>\n\n"
+
+                "Более подробную информацию о ВУЦ можно получить на <a href='https://www.chsu.ru/struktura-chgu/voennyy-uchebnyy-tsentr/'>официальном сайте ЧГУ</a>"
+            )
+        )
+
+    @staticmethod
+    async def unknown_message(bot: Bot, chat_id: int):
+        await bot.send_message(
+            chat_id=chat_id,
+            attachments=[Builder.full_kb()],
+            text=(
+                "<h1>Бот ЧГУ ВУЦ</h1>\n\n"
+                "Выберите интересующую вас страницу ниже\n\n"
 
                 "Более подробную информацию о ВУЦ можно получить на <a href='https://www.chsu.ru/struktura-chgu/voennyy-uchebnyy-tsentr/'>официальном сайте ЧГУ</a>"
             )

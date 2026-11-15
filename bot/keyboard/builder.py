@@ -55,4 +55,16 @@ class Builder:
         ]
         payload = ButtonsPayload(buttons=buttons).pack()
         return payload
+
+    @staticmethod
+    def full_kb():
+        buttons = [
+            [CallbackButton(text="На главную", payload="main")],
+            [CallbackButton(text="Поступление", payload="admission")],
+            [CallbackButton(text="График встреч", payload="meeting_schedule")],
+            [CallbackButton(text="Контакты", payload="contacts")],
+            [CallbackButton(text="Помощь", payload="help")]
+        ]
+        payload = ButtonsPayload(buttons=buttons).pack()
+        return payload
     
