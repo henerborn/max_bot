@@ -19,7 +19,7 @@ def schedule_parse():
 
 async def main():
     schedule.every().day.at(settings.PARSE_TIME).do(schedule_parse)
-    logger.ingo("Scheduler started")
+    logger.info("Scheduler started")
 
     while True:
         schedule.run_pending()
@@ -31,4 +31,4 @@ if __name__ == '__main__':
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        logger.info("Scheduler shutdown...")
+        logger.info("Scheduler shutdown...")                                                                        
