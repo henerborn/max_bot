@@ -3,6 +3,7 @@ import logging
 import schedule
 from bot.config import settings
 from workers.parse_task import parse_task
+from bot.utils.logging import configure_logging
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +19,7 @@ def schedule_parse():
     asyncio.create_task(run_parse())
 
 async def main():
+    configure_logging(logging.INFO)
     await run_parse()  # inital parsing
     schedule.every().day.at(settings.PARSE_TIME).do(schedule_parse)
     logger.info("Scheduler started")
