@@ -1,0 +1,30 @@
+services:
+  bot:
+    build: .
+    command: ["python", "-m", "bot.main"]
+    env_file:
+      - .env
+    volumes:
+      - ./assets:/app/assets
+      - ./data:/app/data
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+  scheduler:
+    build: .
+    command: ["python", "-m", "workers.scheduler"]
+    env_file:
+      - .env
+    volumes:
+      - ./assets:/app/assets
+      - ./data:/app/data
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+
+
+
+    
+
